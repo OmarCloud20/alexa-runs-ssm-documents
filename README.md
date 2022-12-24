@@ -631,11 +631,7 @@ I have sent command shutdown to 1 instance tagged with testing and its current s
 ![Slack](imgs/21.png)
 
 
-[imgs/Alex-Solution-test.mov](https://user-images.githubusercontent.com/9620570/209451044-4a1999a4-0f06-44d2-b8a7-fb5469b71454.mov)
-
-
-
-
+[Alex-Solution-test](https://user-images.githubusercontent.com/9620570/209451044-4a1999a4-0f06-44d2-b8a7-fb5469b71454.mov)
 
 
 
