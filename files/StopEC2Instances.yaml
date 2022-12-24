@@ -1,0 +1,31 @@
+---
+schemaVersion: '2.2'
+description: Stop an ec2 instance and wait for it to stop.
+parameters:
+  PrestopMessage:
+    type: String
+    description: (Optional) Message to display to the user before stopping the instance.
+    default: Preparing to stop the instance...
+  instanceId:
+    type: String
+    description: (Required) Instance ID of the instance to stop.
+  PoststopMessage:
+    type: String
+    description: (Optional) Message to display to the user after stopping the instance.
+    default: Instance is stopping....
+mainSteps:
+  - action: aws:runShellScript
+    name: prestopInstance
+    inputs:
+      runCommand:
+        - echo {{ PrestopMessage }}
+  - action: aws:runShellScript
+    name: stoppingInstance
+    inputs:
+      runCommand:
+        - sudo shutdown -h +1
+  - action: aws:runShellScript
+    name: poststopInstance
+    inputs:
+      runCommand:
+        - echo {{ PoststopMessage }}

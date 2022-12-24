@@ -1,0 +1,27 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:SendCommand",
+                "ec2:DescribeInstances",
+                "ssm:ListCommands",
+                "ssm:DescribeInstanceInformation",
+                "dynamodb:Query"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole",
+                "sns:Publish"
+            ],
+            "Resource": [
+                "arn:aws:sns:*:123456789012:*",
+                "arn:aws:iam::123456789012:role/*"
+            ]
+        }
+    ]
+}

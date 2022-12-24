@@ -1,0 +1,177 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "command control",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "CaptureCommandIntent",
+                    "slots": [
+                        {
+                            "name": "command",
+                            "type": "command",
+                            "samples": [
+                                "It's {command}",
+                                "The command is {command}",
+                                "{command}"
+                            ]
+                        },
+                        {
+                            "name": "tag",
+                            "type": "tag",
+                            "samples": [
+                                "The tag is {tag}",
+                                "It's {tag}",
+                                "{tag}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "run {command}",
+                        "{tag}",
+                        "{command}",
+                        "run {command} {tag}",
+                        "run {command} for {tag} tag",
+                        "run {command} for {tag}",
+                        "run {command} on {tag}",
+                        "I'd like to run {command} on all {tag} tags",
+                        "I would like to run {command} on {tag} tag",
+                        "{tag} {command} ",
+                        "{command} {tag}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "command",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "patch"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "shutdown"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "tag",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "testing"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "patching"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "CaptureCommandIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "command",
+                            "type": "command",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1555151391537.580626119469"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1076937991852.1276514166661.787572372159"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "tag",
+                            "type": "tag",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1555151391537.1323207727186"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1559587223094.1396622216043.1462008102851"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1555151391537.580626119469",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What is the command you'd like to run?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1555151391537.1323207727186",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What is the tag you'd like to run command for?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1076937991852.1276514166661.787572372159",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "This is not a valid command. Let's give it another shot. What is the command?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1559587223094.1396622216043.1462008102851",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "This is not a valid tag. Let's try another tag. "
+                    }
+                ]
+            }
+        ]
+    }
+}
